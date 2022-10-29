@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
+.feed-container {
+  width: 50%;
+  border: 1px solid lightgray;
+}
+.header__items-wrapper {
+  display: flex;
+}
+.banner-img {
+  width: 100%;
+}
+.profile-img-following {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-pic {
+  width: 20%;
+  border-radius: 50%;
+}
+.follower-count-wrapper {
+  display: flex;
+}
+.tabs-wrapper {
+  display: flex;
+}
+.tweet-wrapper {
+  display: flex;
+  border: 1px solid lightgrey;
+}
+.tweet__profile-pic {
+  width: 10%;
+  border-radius: 50%;
+}
+.tweet_contents-actions {
+  display: flex;
+}
