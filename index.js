@@ -84,6 +84,3 @@ for (var tweet of user1.tweets) {
     `;
     document.querySelector('#tweets-container').append(tweetEntry);
 }
-
-var queryString = window.location.search;
-console.log(queryString)
