@@ -4,7 +4,7 @@ var user1 = {
     joinedDate: 'June 2009',
     followingCount: 103,
     followerCount: 47900000,
-    tweetCount: '13.0K',
+    tweetCount: '13.0K Tweets',
     avatarURL: 'assets/elonmusk.jpg',
     coverPhotoURL: 'assets/elonmusk-cover.jpeg',
     tweets: [
@@ -27,6 +27,7 @@ var user2 = {
     userName: '@BillGates',
     displayName: 'Bill Gates',
     joinedDate: 'June 2009',
+    tweetCount: '4,121 tweets',
     followingCount: 274,
     followerCount: 53800000,
     avatarURL: 'assets/billgates.jpg',
@@ -46,41 +47,62 @@ var user2 = {
         }
     ]
 };
-
-var headerText = document.createElement('div');
-headerText.innerHTML = `
-    <p>${user1.displayName}</p>
-    <p>${user1.tweetCount}</p>
-`;
-document.querySelector('#header__items-data-container').append(headerText);
-
-var bannerText =  document.createElement('div');
-bannerText.innerHTML = `
-    <p>${user1.displayName}</p>
-    <p>${user1.userName}</p>
-    <p>joined ${user1.joinedDate}</p>
-`;
-document.querySelector('#profile-img-following').after(bannerText);
-
-var followingData = document.createElement('div');
-followingData.classList.add('follower-count-wrapper');
-followingData.innerHTML = `
-    <p>${user1.followingCount} Following</p> 
-    <p>${user1.followerCount} followers</p>
-`
-var tabsWrapper = document.querySelector('#tabs-wrapper');
-var parentContainer = tabsWrapper.parentNode;
-parentContainer.insertBefore(followingData, tabsWrapper);
-
-for (var tweet of user1.tweets) {
-    var tweetEntry = document.createElement('div');
-    tweetEntry.classList.add('tweet-wrapper');
-    tweetEntry.innerHTML = `
-        <img class="tweet__profile-pic" src="${user1.avatarURL}" alt="">
-        <div class="tweet__contents">
-        <p>${user1.displayName} <span>${user1.userName} </span></p>
-        <p>${tweet.text}</p>
-        </div>
+function dynamicData(user) {
+    var headerText = document.createElement('div');
+    headerText.innerHTML = `
+        <p>${user.displayName}</p>
+        <p>${user.tweetCount}</p>
     `;
-    document.querySelector('#tweets-container').append(tweetEntry);
+    document.querySelector('#header__items-data-container').append(headerText);
+
+    var bannerText =  document.createElement('div');
+    bannerText.innerHTML = `
+        <p>${user.displayName}</p>
+        <p>${user.userName}</p>
+        <p>joined ${user.joinedDate}</p>
+    `;
+    document.querySelector('#profile-img-following').after(bannerText);
+
+    var bannerImg = document.createElement('div');
+    bannerImg.innerHTML = `
+        <img class="banner-img" src="${user.coverPhotoURL}" alt="">
+    `;
+    document.querySelector('#banner-container').append(bannerImg);
+
+    var profilePic = document.createElement('div');
+    profilePic.innerHTML = `
+        <img class="profile-pic" src="${user.avatarURL}" alt="">
+    `;
+    document.querySelector('#profile-pic-container').append(profilePic);
+
+    var followingData = document.createElement('div');
+    followingData.classList.add('follower-count-wrapper');
+    followingData.innerHTML = `
+        <p>${user.followingCount} Following</p> 
+        <p>${user.followerCount} followers</p>
+    `;
+    var tabsWrapper = document.querySelector('#tabs-wrapper');
+    var parentContainer = tabsWrapper.parentNode;
+    parentContainer.insertBefore(followingData, tabsWrapper);
+
+    for (var tweet of user.tweets) {
+        var tweetEntry = document.createElement('div');
+        tweetEntry.classList.add('tweet-wrapper');
+        tweetEntry.innerHTML = `
+            <img class="tweet__profile-pic" src="${user.avatarURL}" alt="">
+            <div class="tweet__contents">
+            <p>${user.displayName} <span>${user.userName} </span></p>
+            <p>${tweet.text}</p>
+            </div>
+        `;
+        document.querySelector('#tweets-container').append(tweetEntry);
+    }
+}
+
+var queryString = window.location.search;
+
+if (queryString === '?user=user1') {
+    dynamicData(user1);
+} else if (queryString ==='?user=user2') {
+    dynamicData(user2);
 }
