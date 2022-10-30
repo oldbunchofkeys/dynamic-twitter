@@ -50,14 +50,14 @@ var user2 = {
 function dynamicData(user) {
     var headerText = document.createElement('div');
     headerText.innerHTML = `
-        <p>${user.displayName}</p>
+        <p class="bold">${user.displayName}</p>
         <p>${user.tweetCount}</p>
     `;
     document.querySelector('#header__items-data-container').append(headerText);
 
     var bannerText =  document.createElement('div');
     bannerText.innerHTML = `
-        <p>${user.displayName}</p>
+        <p class="bold">${user.displayName}</p>
         <p>${user.userName}</p>
         <p>joined ${user.joinedDate}</p>
     `;
@@ -78,8 +78,8 @@ function dynamicData(user) {
     var followingData = document.createElement('div');
     followingData.classList.add('follower-count-wrapper');
     followingData.innerHTML = `
-        <p>${user.followingCount} Following</p> 
-        <p>${user.followerCount} followers</p>
+        <p><span class="bold">${user.followingCount}</span> Following</p> 
+        <p><span class="bold">${user.followerCount}</span> followers</p>
     `;
     var tabsWrapper = document.querySelector('#tabs-wrapper');
     var parentContainer = tabsWrapper.parentNode;
@@ -91,7 +91,7 @@ function dynamicData(user) {
         tweetEntry.innerHTML = `
             <img class="tweet__profile-pic" src="${user.avatarURL}" alt="">
             <div class="tweet__contents">
-            <p>${user.displayName} <span>${user.userName} </span></p>
+            <p class="bold">${user.displayName} <span class="regular-font-weight">${user.userName} </span></p>
             <p>${tweet.text}</p>
             </div>
         `;

@@ -1,18 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 * {
   margin: 0;
+  font-family: "Lato";
 }
 .wrapper {
   display: flex;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
-
 .feed-container {
   width: 50%;
   border: 1px solid lightgray;
+  padding: 0 1rem;
 }
+button {
+  all: unset;
+  cursor: pointer;
+}
+/* index.html styles */
 .header__items-wrapper {
   display: flex;
+  padding: 12px 0;
+}
+.back-button {
+  color: #4A99E9;
+  padding-right: 25px;
+  padding-left: 10px;
+}
+.banner-container, .tweets-container {
+  margin: 0 -1rem;
 }
 .banner-img {
   width: 100%;
@@ -20,9 +36,17 @@
 .profile-img-following {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.button {
+  background-color: #4A99E9;
+  color: #fff;
+  padding: 5px 25px;
+  border-radius: 35px;
+  text-align: center;
 }
 .profile-pic {
-  width: 20%;
+  width: 50%;
   border-radius: 50%;
 }
 .follower-count-wrapper {
@@ -31,14 +55,48 @@
 .tabs-wrapper {
   display: flex;
 }
+.tab {
+  width: 25%;
+  text-align: center;
+  padding: 1rem;
+}
 .tweet-wrapper {
   display: flex;
-  border: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  padding: 12px 16px;
+}
+.tweet-wrapper:first-child {
+  border-top: 1px solid lightgrey;
+}
+.tweet-wrapper:last-child {
+  border-bottom: none;
 }
 .tweet__profile-pic {
   width: 10%;
   border-radius: 50%;
+  margin-right: 10px;
 }
 .tweet_contents-actions {
   display: flex;
+}
+/* index.html utility classes */
+.bold {
+  font-weight: bold;
+}
+.regular-font-weight {
+  font-weight: 400;
+}
+.gray {
+  color: #657486;
+}
+
+/* timeline.html styles */
+
+.timeline__tweet-wrapper {
+  border: 1px solid lightgrey;
+  padding: 15px;
+}
+
+.timeline__tweet-wrapper p {
+  margin: 5px
 }
